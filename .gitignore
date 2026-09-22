@@ -3,3 +3,5 @@ venv/
 papers/
 __pycache__/
 .ipynb_checkpoints/
+mcp_project/.venv/
+mcp_project/papers/
