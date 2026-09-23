@@ -25,6 +25,8 @@ def search_papers(topic: str, max_results: int = 5) -> List[str]:
 
     # Use arxiv to find the papers
     client = arxiv.Client()
+    # arXiv blocks the default python-requests User-Agent; use a browser-like one instead
+    client._session.headers.update({'User-Agent': 'Mozilla/5.0 (research-mcp-server)'})
 
     # Search for the most relevant articles matching the queried topic
     search = arxiv.Search(
