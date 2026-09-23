@@ -7,7 +7,8 @@ from mcp.server.fastmcp import FastMCP
 PAPER_DIR = "papers"
 
 # Initialize FastMCP server
-mcp = FastMCP("research", port=8001)
+# Render (and most PaaS hosts) assign the port via $PORT and require binding to 0.0.0.0
+mcp = FastMCP("research", host="0.0.0.0", port=int(os.environ.get("PORT", 8001)))
 
 @mcp.tool()
 def search_papers(topic: str, max_results: int = 5) -> List[str]:
